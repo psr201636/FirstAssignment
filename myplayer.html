@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+    <head>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <style>
+            .divplayer {
+  height: 400px;
+  width: 60%;
+  background-color:dimgray;
+}
+.divplayer2 {
+  height: 60px;
+  background-color: #f2f2f2;
+ 
+}
+.buttonControl{
+        padding: 15px;
+        border: none;
+        border-radius: 30px;
+        margin-left:20px;
+        background:lightcyan
+    }
+    .buttonControl1{
+        padding: 10px;
+        border: none;
+        margin-left:20px;
+        background: none;
+        color:cornflowerblue;
+        font-size:18px;
+    }
+    .buttonControl2{
+        padding: 15px;
+        border: none;
+        border-radius: 30px;
+        margin-left:25px;
+        background:lightcyan
+    }
+    .buttonControl1 span.glyphicon {
+        margin-right: 2px; 
+        display: inline-block;
+            }
+
+            .redColor{
+        color:red !important;
+    }
+
+    /* Style the container/contact section */
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 10px;
+
+}
+
+/* Create two columns that float next to eachother */
+.column {
+  float: left;
+  margin-top: 6px;
+  padding: 20px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+ 
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+            </style>
+    </head>
+<body onload="init();">
+        <div class="container ">
+        <div class="row ">
+                <div class="column">
+    <!--<div class="divplayer" >-->
+    <video id="videoPlayer" style="margin-left: 10px; width:100%" > 
+     <source src=http://techslides.com/demos/sample-videos/small.webm type=video/webm> 
+        <source src=http://techslides.com/demos/sample-videos/small.ogv type=video/ogg> 
+        <source src=http://techslides.com/demos/sample-videos/small.mp4 type=video/mp4>
+        <source src=http://techslides.com/demos/sample-videos/small.3gp type=video/3gp>
+      </video>
+
+      <div class="progress" style="margin-left: 10px; margin-right: 35px;">
+            <div id="progress-bar" class="progress-bar" role="progressbar" aria-valuenow="70"
+            aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                
+            </div>
+        </div>
+      <div id="video-controls"  class="divplayer2">
+            <button type="button" class="buttonControl"   onclick="play()" id="play">
+                    <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+            </button>
+            <button type="button" class="buttonControl"  disabled="true" onclick="pause()" id="pause">
+                    <span class="glyphicon glyphicon-pause" aria-hidden="true"></span>
+            </button>
+            <button type="button"  class="buttonControl" disabled="true" onclick="stop()" id="stop">
+                    <span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
+            </button>
+            <button type="button"  class="buttonControl"  onclick="refresh()" id="refresh">
+                <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+        </button>
+            <button id="minus" class="buttonControl" onclick="volume('minus')">
+                    <span class="glyphicon glyphicon-volume-down" aria-hidden="true"></span>
+                </button>
+                <button id="plus" class="buttonControl" onclick="volume('plus')">
+                        <span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span>
+                </button>
+                <button id="plus" class="buttonControl" onclick="volume('headphone')">
+                        <span class="glyphicon glyphicon-headphones" aria-hidden="true"></span>
+                </button>
+                <button class="buttonControl1" onclick="likes()">
+                    <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                    <span id="likeCount"></span>
+                </button>
+                <button class="buttonControl1 redColor" onclick="dislikes()">
+                    <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+                    <span id="dislikeCount"></span>
+                </button>
+            
+      </br>
+        
+        </div>
+                </div>
+        <div class="column">
+
+                <button type="button" class="buttonControl"   onclick="run('//thenewcode.com/assets/videos/ocean-small.mp4')" id="play">
+                        <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                 </button>
+                 Introduction to HTML5
+                 <br/>
+                 <br/>
+                 <button type="button" class="buttonControl"   onclick="run('//thenewcode.com/assets/videos/downtown-los-angeles.mp4')" id="play">
+                        <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                 </button>
+                 Introduction to Styling with CSS3
+                 <br/>
+                 <br/>
+                 <button type="button" class="buttonControl"   onclick="run('//techslides.com/demos/sample-videos/small.mp4')" id="play">
+                        <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                 </button>
+                 Introduction to Bootstrap 4
+                 <br/>
+                 <br/>
+                 <button type="button" class="buttonControl"   onclick="run('//clips.vorwaerts-gmbh.de/big_buck_bunny.mp4')" id="play">
+                        <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                 </button>
+                 Learn to create website with HTML5, CSS3 and Bootstrap4
+                 <br/>
+                 <br/>
+                 <button type="button" class="buttonControl"   onclick="run('//clips.vorwaerts-gmbh.de/big_buck_bunny.mp4')" id="play">
+                        <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                 </button>
+                 Introduction to Javascript
+</div>
+</div>
+
+        <script>
+         function play(){
+             document.getElementById("videoPlayer").play();
+             document.getElementById("pause").disabled=false;
+             document.getElementById("play").disabled=true;
+             document.getElementById("stop").disabled=false;
+         }
+
+         function pause(){
+             document.getElementById("videoPlayer").pause();
+             document.getElementById("pause").disabled=true;
+             document.getElementById("play").disabled=false;
+             
+         }
+
+         function stop(){
+             let vid = document.getElementById("videoPlayer");
+             vid.pause();
+             vid.currentTime=0;
+             document.getElementById("stop").disabled=true;
+             document.getElementById("play").disabled=false;
+             
+         }
+
+         
+         function refresh(){
+             let vid = document.getElementById("videoPlayer");
+             vid.pause();
+             vid.currentTime=0;
+             play();
+             
+         }
+
+         function init() {
+            var vid = document.getElementById("videoPlayer");  
+            // Check browser support
+            if (typeof(Storage) !== "undefined") {
+                // Store
+                if(!localStorage.like){
+                    localStorage.setItem("like", 0);
+                }
+                if(!localStorage.dislike) {
+                    localStorage.setItem("dislike", 0);
+                }
+                // Retrieve
+                document.getElementById("likeCount").innerHTML = localStorage.getItem("like");
+                document.getElementById("dislikeCount").innerHTML = localStorage.getItem("dislike");
+                } else {
+                    alert("Sorry, your browser does not support Web Storage...");
+                }
+            vid.addEventListener('timeupdate', updateProgressBar, false);
+         }
+
+         function updateProgressBar() {
+                var vid = document.getElementById("videoPlayer");  
+                var progressBar = document.getElementById('progress-bar');
+                var percentage = Math.floor((100 / vid.duration) * vid.currentTime);
+                //progressBar.value = percentage;
+                progressBar.style.width = percentage + '%';
+            }
+
+            function volume(action){
+                var vid = document.getElementById("videoPlayer");  
+                if(action == "plus") {
+                    var vol =  parseFloat(vid.volume).toFixed(1);
+                    if(vol < 1){
+                        vid.volume = vid.volume + 0.1;
+                    }
+                } else if(action == "minus") {
+                    var vol =  parseFloat(vid.volume).toFixed(1);
+                    if(vol >0){
+                        vid.volume = vid.volume - 0.1;
+                    }
+                }else if(action == "headphone") {
+                    if(vid.muted){
+                        vid.muted = false;
+                    } else {
+                        vid.muted = true;
+                    }
+                }
+             
+         }
+
+         function likes() {
+                if (typeof(Storage) !== "undefined") {
+                    var count = Number(localStorage.getItem("like"));
+                    ++count;
+                    localStorage.setItem("like", count);
+                    init();
+              }
+         }
+
+              function dislikes() {
+                var count = Number(localStorage.getItem("dislike"));
+                    ++count;
+                    localStorage.setItem("dislike", count);
+                    init();
+              }
+
+              function run(link){
+                  link='http:' + link;
+                  var player = document.getElementById("videoPlayer");  
+                player.src=link;
+			
+			player.load();
+			player.play();
+            document.getElementById("pause").disabled=false;
+             document.getElementById("play").disabled=true;
+             document.getElementById("stop").disabled=false;
+	}
+        </script>
+</body>
+</html>
